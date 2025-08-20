@@ -1,18 +1,19 @@
 <h1>New Article</h1>
-
-
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
-  <p>
+<%= link_to "New Article", new_article_path %>
+<br/>
+<%= link_to "All Articles", articles_path %>
+<%= form_with model: @article do |form| %>
+  <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= form.label :text %><br>
     <%= form.text_area :text %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= form.submit %>
-  </p>
+  </div>
 <% end %>

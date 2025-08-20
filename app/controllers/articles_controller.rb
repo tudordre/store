@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
+  def index
+    @articles = Article.all
+  end
   def new
-    Rails.logger.info "new-endpoint"
+    @article = Article.new
   end
 
   def create
