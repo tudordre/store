@@ -1,17 +1,12 @@
-<h1>Article Details</h1>
+<h1>Article SHOW</h1>
 
 <%= link_to "New Article", new_article_path %>
 <br/>
 <%= link_to "All Articles", articles_path %>
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+<h1><%= @article.title %></h1>
+
+<p><%= @article.text %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
@@ -20,3 +15,22 @@
     turbo_confirm: "Are you sure?"
   } %></li>
 </ul>
+
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
